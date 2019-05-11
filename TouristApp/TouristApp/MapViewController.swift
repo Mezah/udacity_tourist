@@ -31,6 +31,11 @@ class MapViewController: UIViewController , MKMapViewDelegate{
         let annotation = MKPointAnnotation()
         annotation.coordinate = touchMapCoordinate!
         travellerMap.addAnnotation(annotation)
+        //TODO : Save the selected locations into local storage
+        let selectedPin = Pin(context:dataController.viewContext)
+        selectedPin.long = annotation.coordinate.longitude
+        selectedPin.lat = annotation.coordinate.latitude
+        
         
     }
     
@@ -49,21 +54,6 @@ class MapViewController: UIViewController , MKMapViewDelegate{
         
     }
 
-
-    func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
-        //TODO first : Add annotation assocciated to the selected location to the map
-        for view in views {
-            let coordinate = view.annotation?.coordinate
-            let testingMsg = "long = \(coordinate?.longitude), lat = \(coordinate?.latitude)"
-            print(testingMsg)
-            mapView.addAnnotation(view.annotation!)
-        }
-        //TODO : Save the selected locations into local storage
-        //
-        //
-        //
-        //
-    }
     // setup annotation view (pins) on map
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
@@ -86,9 +76,12 @@ class MapViewController: UIViewController , MKMapViewDelegate{
 
     // This delegate method is implemented to respond to taps. It should open the photo album related to this pin
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        // get an instance of photo album view controller
+        let photoAlbum = self.storyboard?.instantiateViewController(withIdentifier: "PhotoAlbumViewController") as! PhotoAlbumViewController
+        
+        // navigate to the next screen with photo albums
         self.performSegue(withIdentifier: "toCollection", sender:self)
     }
     
-   
 }
 
