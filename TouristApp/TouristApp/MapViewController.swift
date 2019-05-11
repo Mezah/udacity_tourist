@@ -28,11 +28,9 @@ class MapViewController: UIViewController , MKMapViewDelegate{
         let touchPoint = gestureRecognizer.location(in: travellerMap)
         let touchMapCoordinate = travellerMap?.convert(touchPoint, toCoordinateFrom: travellerMap)
     
-        if let selectedLocation = touchMapCoordinate {
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = selectedLocation
-           travellerMap.addAnnotation(annotation)
-        }
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = touchMapCoordinate!
+        travellerMap.addAnnotation(annotation)
         
     }
     
@@ -58,8 +56,13 @@ class MapViewController: UIViewController , MKMapViewDelegate{
             let coordinate = view.annotation?.coordinate
             let testingMsg = "long = \(coordinate?.longitude), lat = \(coordinate?.latitude)"
             print(testingMsg)
+            mapView.addAnnotation(view.annotation!)
         }
-        //TODO Second: Save the selected locations into local storage
+        //TODO : Save the selected locations into local storage
+        //
+        //
+        //
+        //
     }
     // setup annotation view (pins) on map
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -82,12 +85,10 @@ class MapViewController: UIViewController , MKMapViewDelegate{
     }
 
     // This delegate method is implemented to respond to taps. It should open the photo album related to this pin
-    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        if control == view.rightCalloutAccessoryView {
-            if let toOpen = view.annotation {
-                // TODO go to photo album related to this pin
-            }
-        }
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        self.performSegue(withIdentifier: "toCollection", sender:self)
     }
+    
+   
 }
 
