@@ -49,7 +49,7 @@
                     <navigationItem key="navigationItem" id="RQI-la-Yc7"/>
                     <connections>
                         <outlet property="travellerMap" destination="KRs-eh-Fol" id="Lb9-U0-Xnf"/>
-                        <segue destination="LMr-71-Z3A" kind="show" identifier="toCollection" id="BVB-bD-M8D"/>
+                        <segue destination="y26-ML-xcf" kind="show" identifier="toCollection" id="Vap-6Z-7Cl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -65,10 +65,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="hps-MA-ibg">
-                                <rect key="frame" x="0.0" y="64" width="375" height="174"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="203"/>
                             </mapView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="h6i-Zp-RzA">
-                                <rect key="frame" x="0.0" y="238" width="375" height="380"/>
+                                <rect key="frame" x="0.0" y="267" width="375" height="351"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="k9h-jp-Zcq">
                                     <size key="itemSize" width="101" height="107"/>
@@ -98,17 +98,38 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <tabBar autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" itemPositioning="centered" translatesAutoresizingMaskIntoConstraints="NO" id="5qT-Rz-OVh">
+                                <rect key="frame" x="0.0" y="618" width="375" height="49"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items/>
+                            </tabBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Collection" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xy2-NL-ct4">
+                                <rect key="frame" x="0.0" y="618" width="375" height="49"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="5qT-Rz-OVh" firstAttribute="trailing" secondItem="3eO-ZV-REK" secondAttribute="trailing" id="1hp-A0-znh"/>
+                            <constraint firstItem="3eO-ZV-REK" firstAttribute="bottom" secondItem="xy2-NL-ct4" secondAttribute="bottom" id="2Va-zv-d6A"/>
                             <constraint firstItem="3eO-ZV-REK" firstAttribute="trailing" secondItem="h6i-Zp-RzA" secondAttribute="trailing" id="6cK-7s-7h1"/>
+                            <constraint firstItem="5qT-Rz-OVh" firstAttribute="top" secondItem="h6i-Zp-RzA" secondAttribute="bottom" id="EcJ-JW-1ck"/>
+                            <constraint firstItem="5qT-Rz-OVh" firstAttribute="leading" secondItem="h6i-Zp-RzA" secondAttribute="leading" id="MID-My-GVW"/>
                             <constraint firstItem="hps-MA-ibg" firstAttribute="leading" secondItem="3eO-ZV-REK" secondAttribute="leading" id="NoI-5a-6d6"/>
                             <constraint firstItem="3eO-ZV-REK" firstAttribute="trailing" secondItem="hps-MA-ibg" secondAttribute="trailing" id="O4O-Ub-HIm"/>
-                            <constraint firstItem="3eO-ZV-REK" firstAttribute="bottom" secondItem="hps-MA-ibg" secondAttribute="bottom" constant="380" id="VJD-7k-ZZa"/>
-                            <constraint firstItem="3eO-ZV-REK" firstAttribute="bottom" secondItem="h6i-Zp-RzA" secondAttribute="bottom" id="a6Y-HJ-yZF"/>
+                            <constraint firstItem="5qT-Rz-OVh" firstAttribute="bottom" secondItem="3eO-ZV-REK" secondAttribute="bottom" id="PLS-li-DFn"/>
+                            <constraint firstItem="xy2-NL-ct4" firstAttribute="top" secondItem="h6i-Zp-RzA" secondAttribute="bottom" id="TPl-QB-OX6"/>
+                            <constraint firstItem="3eO-ZV-REK" firstAttribute="bottom" secondItem="hps-MA-ibg" secondAttribute="bottom" constant="400" id="VJD-7k-ZZa"/>
                             <constraint firstItem="h6i-Zp-RzA" firstAttribute="leading" secondItem="3eO-ZV-REK" secondAttribute="leading" id="aii-AM-cKo"/>
+                            <constraint firstItem="5qT-Rz-OVh" firstAttribute="leading" secondItem="3eO-ZV-REK" secondAttribute="leading" id="fTU-L3-Bsi"/>
                             <constraint firstItem="hps-MA-ibg" firstAttribute="top" secondItem="3eO-ZV-REK" secondAttribute="top" id="ggT-Cg-caI"/>
+                            <constraint firstItem="5qT-Rz-OVh" firstAttribute="bottom" secondItem="3eO-ZV-REK" secondAttribute="bottom" id="kdS-Ru-WCO"/>
+                            <constraint firstItem="5qT-Rz-OVh" firstAttribute="trailing" secondItem="h6i-Zp-RzA" secondAttribute="trailing" id="mmL-pN-WUo"/>
+                            <constraint firstItem="xy2-NL-ct4" firstAttribute="leading" secondItem="3eO-ZV-REK" secondAttribute="leading" id="nyd-X5-7fy"/>
                             <constraint firstItem="h6i-Zp-RzA" firstAttribute="top" secondItem="hps-MA-ibg" secondAttribute="bottom" id="qug-HN-YHq"/>
+                            <constraint firstItem="3eO-ZV-REK" firstAttribute="trailing" secondItem="xy2-NL-ct4" secondAttribute="trailing" id="zcO-gI-qkb"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3eO-ZV-REK"/>
                     </view>
@@ -119,24 +140,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qCW-JO-0tb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1449" y="-155"/>
-        </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="CCi-b0-LjM">
-            <objects>
-                <tabBarController id="LMr-71-Z3A" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="DvX-cO-644">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="y26-ML-xcf" kind="relationship" relationship="viewControllers" id="Ve2-W7-qn3"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dOI-iY-BI5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="660" y="-155"/>
+            <point key="canvasLocation" x="660" y="-152"/>
         </scene>
     </scenes>
 </document>

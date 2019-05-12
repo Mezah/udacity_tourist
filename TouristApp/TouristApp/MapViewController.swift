@@ -92,11 +92,20 @@ class MapViewController: UIViewController , MKMapViewDelegate{
     // This delegate method is implemented to respond to taps. It should open the photo album related to this pin
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         // get an instance of photo album view controller
-        let photoAlbum = self.storyboard?.instantiateViewController(withIdentifier: "PhotoAlbumViewController") as! PhotoAlbumViewController
-//        photoAlbum.pinLocation = selectedPin
+       
         // navigate to the next screen with photo albums
-        self.performSegue(withIdentifier: "toCollection", sender:self)
+        self.performSegue(withIdentifier: "toCollection", sender: view)
     }
  
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toCollection" {
+            let view = sender as! MKAnnotationView
+            let photoAlbum = segue.destination as! PhotoAlbumViewController
+            let selectedPin = Pin(context:dataController.viewContext)
+            selectedPin.long = view.annotation?.coordinate.longitude ?? 0.0
+            selectedPin.lat = view.annotation?.coordinate.latitude ?? 0.0
+            photoAlbum.pinLocation = selectedPin
+        }
+    }
 }
 
