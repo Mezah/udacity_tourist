@@ -113,10 +113,13 @@
                         <viewLayoutGuide key="safeArea" id="3eO-ZV-REK"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="New Collection" id="s5p-Hr-zGS"/>
+                    <connections>
+                        <outlet property="photoAlbumLocation" destination="hps-MA-ibg" id="pxU-tB-D3u"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qCW-JO-0tb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1577" y="-155"/>
+            <point key="canvasLocation" x="1449" y="-155"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="CCi-b0-LjM">

@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 class DataController {
-    static let shared = DataController(modelName: "TouristAppModel")
+    static let shared = DataController(modelName: "TouristApp")
     
     let persistentContainer:NSPersistentContainer
     

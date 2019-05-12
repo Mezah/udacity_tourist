@@ -8,11 +8,13 @@
 
 import UIKit
 import MapKit
+import CoreData
 
 class MapViewController: UIViewController , MKMapViewDelegate{
 
     private let dataController = DataController.shared
     var locationAnnotations = [MKPointAnnotation]()
+    
     
     @IBOutlet weak var travellerMap: MKMapView!
     
@@ -31,11 +33,13 @@ class MapViewController: UIViewController , MKMapViewDelegate{
         let annotation = MKPointAnnotation()
         annotation.coordinate = touchMapCoordinate!
         travellerMap.addAnnotation(annotation)
-        //TODO : Save the selected locations into local storage
+        // Save the selected locations into local storage
+        // first initialize object
         let selectedPin = Pin(context:dataController.viewContext)
         selectedPin.long = annotation.coordinate.longitude
         selectedPin.lat = annotation.coordinate.latitude
-        
+        // save after setting the object up
+        try? dataController.viewContext.save()
         
     }
     
@@ -50,8 +54,19 @@ class MapViewController: UIViewController , MKMapViewDelegate{
     
     
     private func prepareData(){
-        // TODO first load data from local storage if any and associate it with the location annotation dictionary
-        
+        // load data from local storage if any and associate it with the location annotation dictionary
+        let fetchReq : NSFetchRequest<Pin> = Pin.fetchRequest()
+        if let pinsResult = try? dataController.viewContext.fetch(fetchReq){
+            for pin in pinsResult {
+                let annot = MKPointAnnotation()
+                let lat = CLLocationDegrees(pin.lat)
+                let long = CLLocationDegrees(pin.long)
+                
+                let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+                annot.coordinate = coordinate
+                travellerMap.addAnnotation(annot)
+            }
+        }
     }
 
     // setup annotation view (pins) on map
@@ -78,10 +93,10 @@ class MapViewController: UIViewController , MKMapViewDelegate{
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         // get an instance of photo album view controller
         let photoAlbum = self.storyboard?.instantiateViewController(withIdentifier: "PhotoAlbumViewController") as! PhotoAlbumViewController
-        
+//        photoAlbum.pinLocation = selectedPin
         // navigate to the next screen with photo albums
         self.performSegue(withIdentifier: "toCollection", sender:self)
     }
-    
+ 
 }
 
