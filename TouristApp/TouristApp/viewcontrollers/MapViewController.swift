@@ -24,6 +24,9 @@ class MapViewController: UIViewController , MKMapViewDelegate{
         travellerMap.addGestureRecognizer(longPressRecogniser)
     }
     
+    /**
+     Handle user press on the map to add a pin on the required location
+     **/
     @objc func handleLongPress(_ gestureRecognizer : UIGestureRecognizer){
         if gestureRecognizer.state != .began { return }
         
@@ -40,6 +43,7 @@ class MapViewController: UIViewController , MKMapViewDelegate{
         selectedPin.lat = annotation.coordinate.latitude
         // save after setting the object up
         try? dataController.viewContext.save()
+        // TODO start download photos related to pin
         
     }
     
@@ -98,6 +102,7 @@ class MapViewController: UIViewController , MKMapViewDelegate{
     }
  
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // prepare the cotroller before navigate to it
         if segue.identifier == "toCollection" {
             let view = sender as! MKAnnotationView
             let photoAlbum = segue.destination as! PhotoAlbumViewController

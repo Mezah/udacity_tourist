@@ -77,7 +77,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectionImage" id="TXD-lf-kvS">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectionImage" id="TXD-lf-kvS" customClass="CustomCollectionViewCell" customModule="TouristApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="101" height="107"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -97,6 +97,10 @@
                                         </constraints>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="y26-ML-xcf" id="KKc-p5-FSE"/>
+                                    <outlet property="delegate" destination="y26-ML-xcf" id="JVa-Nb-llF"/>
+                                </connections>
                             </collectionView>
                             <tabBar autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" itemPositioning="centered" translatesAutoresizingMaskIntoConstraints="NO" id="5qT-Rz-OVh">
                                 <rect key="frame" x="0.0" y="618" width="375" height="49"/>
@@ -135,6 +139,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="New Collection" id="s5p-Hr-zGS"/>
                     <connections>
+                        <outlet property="albumCollectionView" destination="h6i-Zp-RzA" id="H3d-xQ-vVk"/>
                         <outlet property="photoAlbumLocation" destination="hps-MA-ibg" id="pxU-tB-D3u"/>
                     </connections>
                 </viewController>

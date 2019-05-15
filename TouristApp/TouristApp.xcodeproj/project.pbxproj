@@ -13,6 +13,11 @@
 		A18AE51B2284CF930072344C /* TouristApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A18AE5192284CF930072344C /* TouristApp.xcdatamodeld */; };
 		A18AE51D2284CF940072344C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A18AE51C2284CF940072344C /* Assets.xcassets */; };
 		A18AE5202284CF940072344C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A18AE51E2284CF940072344C /* LaunchScreen.storyboard */; };
+		A1E80EDF228C905E006CF9DF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E80EDE228C905E006CF9DF /* Constants.swift */; };
+		A1E80EE1228C90A9006CF9DF /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E80EE0228C90A9006CF9DF /* GCDBlackBox.swift */; };
+		A1E80EE8228C936C006CF9DF /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E80EE7228C936C006CF9DF /* Utility.swift */; };
+		A1E80EEB228CA694006CF9DF /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E80EEA228CA694006CF9DF /* CustomCollectionViewCell.swift */; };
+		A1E80EED228CAE5A006CF9DF /* FlickerDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E80EEC228CAE5A006CF9DF /* FlickerDownload.swift */; };
 		A1F2C5ED228729F700110E70 /* PhotoAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F2C5EC228729F700110E70 /* PhotoAlbumViewController.swift */; };
 		A1F2C5F02287747D00110E70 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F2C5EF2287747D00110E70 /* DataController.swift */; };
 /* End PBXBuildFile section */
@@ -26,6 +31,11 @@
 		A18AE51C2284CF940072344C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A18AE51F2284CF940072344C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A18AE5212284CF940072344C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A1E80EDE228C905E006CF9DF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A1E80EE0228C90A9006CF9DF /* GCDBlackBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
+		A1E80EE7228C936C006CF9DF /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		A1E80EEA228CA694006CF9DF /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
+		A1E80EEC228CAE5A006CF9DF /* FlickerDownload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickerDownload.swift; sourceTree = "<group>"; };
 		A1F2C5EC228729F700110E70 /* PhotoAlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAlbumViewController.swift; sourceTree = "<group>"; };
 		A1F2C5EF2287747D00110E70 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -60,16 +70,53 @@
 		A18AE5112284CF930072344C /* TouristApp */ = {
 			isa = PBXGroup;
 			children = (
+				A1E80EE9228CA66F006CF9DF /* customviews */,
+				A1E80EE4228C9269006CF9DF /* extensions */,
+				A1E80EE3228C9254006CF9DF /* utils */,
+				A1E80EE2228C9231006CF9DF /* viewcontrollers */,
 				A1F2C5EE2287745200110E70 /* model */,
 				A18AE5122284CF930072344C /* AppDelegate.swift */,
-				A18AE5142284CF930072344C /* MapViewController.swift */,
 				A18AE5162284CF930072344C /* Main.storyboard */,
 				A18AE51C2284CF940072344C /* Assets.xcassets */,
 				A18AE51E2284CF940072344C /* LaunchScreen.storyboard */,
 				A18AE5212284CF940072344C /* Info.plist */,
-				A1F2C5EC228729F700110E70 /* PhotoAlbumViewController.swift */,
 			);
 			path = TouristApp;
+			sourceTree = "<group>";
+		};
+		A1E80EE2228C9231006CF9DF /* viewcontrollers */ = {
+			isa = PBXGroup;
+			children = (
+				A1F2C5EC228729F700110E70 /* PhotoAlbumViewController.swift */,
+				A18AE5142284CF930072344C /* MapViewController.swift */,
+			);
+			path = viewcontrollers;
+			sourceTree = "<group>";
+		};
+		A1E80EE3228C9254006CF9DF /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				A1E80EDE228C905E006CF9DF /* Constants.swift */,
+				A1E80EE0228C90A9006CF9DF /* GCDBlackBox.swift */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
+		A1E80EE4228C9269006CF9DF /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A1E80EE7228C936C006CF9DF /* Utility.swift */,
+				A1E80EEC228CAE5A006CF9DF /* FlickerDownload.swift */,
+			);
+			path = extensions;
+			sourceTree = "<group>";
+		};
+		A1E80EE9228CA66F006CF9DF /* customviews */ = {
+			isa = PBXGroup;
+			children = (
+				A1E80EEA228CA694006CF9DF /* CustomCollectionViewCell.swift */,
+			);
+			path = customviews;
 			sourceTree = "<group>";
 		};
 		A1F2C5EE2287745200110E70 /* model */ = {
@@ -153,10 +200,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1F2C5F02287747D00110E70 /* DataController.swift in Sources */,
+				A1E80EEB228CA694006CF9DF /* CustomCollectionViewCell.swift in Sources */,
 				A18AE51B2284CF930072344C /* TouristApp.xcdatamodeld in Sources */,
+				A1E80EE8228C936C006CF9DF /* Utility.swift in Sources */,
+				A1E80EED228CAE5A006CF9DF /* FlickerDownload.swift in Sources */,
 				A18AE5152284CF930072344C /* MapViewController.swift in Sources */,
 				A18AE5132284CF930072344C /* AppDelegate.swift in Sources */,
 				A1F2C5ED228729F700110E70 /* PhotoAlbumViewController.swift in Sources */,
+				A1E80EDF228C905E006CF9DF /* Constants.swift in Sources */,
+				A1E80EE1228C90A9006CF9DF /* GCDBlackBox.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
