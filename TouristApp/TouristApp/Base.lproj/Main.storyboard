@@ -95,6 +95,9 @@
                                             <constraint firstAttribute="bottom" secondItem="tmO-Jd-yAv" secondAttribute="bottom" id="Rx7-ox-LQP"/>
                                             <constraint firstAttribute="trailing" secondItem="tmO-Jd-yAv" secondAttribute="trailing" id="r5w-dd-km3"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="locationImage" destination="tmO-Jd-yAv" id="ev1-WE-i37"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>

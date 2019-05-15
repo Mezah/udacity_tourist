@@ -238,38 +238,19 @@ class PhotoAlbumViewController: UIViewController,MKMapViewDelegate,UICollectionV
     }
 
     func loadImageByLatLon(longitute long:Double?,latitude lat :Double?){
-        if isValueValid(lat, forRange: Constants.Flickr.SearchLatRange)
-            && isValueValid(long, forRange: Constants.Flickr.SearchLonRange) {
 //            photoTitleLabel.text = "Searching..."
             //TODO : Show Some sort of loading
             let methodParameters = [
                 Constants.FlickrParameterKeys.Method: Constants.FlickrParameterValues.SearchMethod,
                 Constants.FlickrParameterKeys.APIKey: Constants.FlickrParameterValues.APIKey,
-                Constants.FlickrParameterKeys.BoundingBox: bboxString(long, lat),
+                Constants.FlickrParameterKeys.Longitude: String(long!),
+                Constants.FlickrParameterKeys.Latitude:String(lat!),
+                Constants.FlickrParameterKeys.PageLimit:"10",
                 Constants.FlickrParameterKeys.SafeSearch: Constants.FlickrParameterValues.UseSafeSearch,
                 Constants.FlickrParameterKeys.Extras: Constants.FlickrParameterValues.MediumURL,
                 Constants.FlickrParameterKeys.Format: Constants.FlickrParameterValues.ResponseFormat,
                 Constants.FlickrParameterKeys.NoJSONCallback: Constants.FlickrParameterValues.DisableJSONCallback
             ]
             displayImageFromFlickrBySearch(methodParameters as [String:AnyObject])
-        }
-        else {
-//            setUIEnabled(true)
-//            photoTitleLabel.text = "Lat should be [-90, 90].\nLon should be [-180, 180]."
-            //TODO hide loading and show error messages
-        }
-    }
-    
-    private func bboxString(_ long:Double?,_ lat :Double?) -> String {
-        // ensure bbox is bounded by minimum and maximums
-        if let latitude = lat, let longitude = long {
-            let minimumLon = max(longitude - Constants.Flickr.SearchBBoxHalfWidth, Constants.Flickr.SearchLonRange.0)
-            let minimumLat = max(latitude - Constants.Flickr.SearchBBoxHalfHeight, Constants.Flickr.SearchLatRange.0)
-            let maximumLon = min(longitude + Constants.Flickr.SearchBBoxHalfWidth, Constants.Flickr.SearchLonRange.1)
-            let maximumLat = min(latitude + Constants.Flickr.SearchBBoxHalfHeight, Constants.Flickr.SearchLatRange.1)
-            return "\(minimumLon),\(minimumLat),\(maximumLon),\(maximumLat)"
-        } else {
-            return "0,0,0,0"
-        }
     }
 }

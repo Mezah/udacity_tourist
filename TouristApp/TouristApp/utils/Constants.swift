@@ -38,6 +38,9 @@ struct Constants {
         static let Text = "text"
         static let BoundingBox = "bbox"
         static let Page = "page"
+        static let Longitude = "lon"
+        static let Latitude = "lat"
+        static let PageLimit = "per_page"
     }
     
     // MARK: Flickr Parameter Values
