@@ -47,11 +47,11 @@ class MapViewController: UIViewController , MKMapViewDelegate{
             // save after setting the object up
             try? dataController.viewContext.save()
             // TODO start download photos related to pin
-            self.flickerDownload.loadImageByLatLon(selectedPin,{
+            self.flickerDownload.loadImageByLatLon(selectedPin,success: {
                 
                 // save after setting the object up
                 try? self.dataController.viewContext.save()
-            },{
+            },failed: {
                 //TODO do some error handle
             })
         }

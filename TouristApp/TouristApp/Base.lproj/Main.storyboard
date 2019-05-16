@@ -87,16 +87,27 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tmO-Jd-yAv">
                                                     <rect key="frame" x="0.0" y="0.0" width="101" height="107"/>
                                                 </imageView>
+                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FZP-cw-1xV">
+                                                    <rect key="frame" x="0.0" y="0.0" width="101" height="107"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </view>
                                         <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="FZP-cw-1xV" secondAttribute="bottom" id="BaP-vG-O6E"/>
                                             <constraint firstItem="tmO-Jd-yAv" firstAttribute="top" secondItem="TXD-lf-kvS" secondAttribute="top" id="Khg-Ed-iFh"/>
                                             <constraint firstItem="tmO-Jd-yAv" firstAttribute="leading" secondItem="TXD-lf-kvS" secondAttribute="leading" id="OXS-qT-JMk"/>
                                             <constraint firstAttribute="bottom" secondItem="tmO-Jd-yAv" secondAttribute="bottom" id="Rx7-ox-LQP"/>
+                                            <constraint firstItem="FZP-cw-1xV" firstAttribute="leading" secondItem="TXD-lf-kvS" secondAttribute="leading" id="WLS-dP-P10"/>
                                             <constraint firstAttribute="trailing" secondItem="tmO-Jd-yAv" secondAttribute="trailing" id="r5w-dd-km3"/>
+                                            <constraint firstItem="FZP-cw-1xV" firstAttribute="top" secondItem="TXD-lf-kvS" secondAttribute="top" id="rDd-92-nJq"/>
+                                            <constraint firstAttribute="trailing" secondItem="FZP-cw-1xV" secondAttribute="trailing" id="zQW-ur-ZtY"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="locationImage" destination="tmO-Jd-yAv" id="ev1-WE-i37"/>
+                                            <outlet property="placeHolder" destination="FZP-cw-1xV" id="UXD-se-afC"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

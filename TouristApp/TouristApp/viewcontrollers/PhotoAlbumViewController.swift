@@ -19,7 +19,7 @@ class PhotoAlbumViewController: UIViewController,MKMapViewDelegate,UICollectionV
     
     var long :Double!
     var lat :Double!
-    
+    var loading:Bool = false
     var photosList = [Photo]() // array of images to be displayed
     private let dataController = DataController.shared
     
@@ -43,7 +43,8 @@ class PhotoAlbumViewController: UIViewController,MKMapViewDelegate,UICollectionV
         for photo in pinsResult[0].photos as! Set<Photo> {
             photosList.append(photo)
         }
-        albumCollectionView.reloadData()
+        self.albumCollectionView.reloadData()
+        
     }
  
  
@@ -97,6 +98,8 @@ class PhotoAlbumViewController: UIViewController,MKMapViewDelegate,UICollectionV
         let photo = photosList[(indexPath as NSIndexPath).row]
         cell.locationImage.image = UIImage(data:photo.imageContent!)!
         
+        cell.placeHolder.isHidden = !loading
+        cell.locationImage.isHidden = loading
         return cell
     }
     
@@ -120,17 +123,18 @@ class PhotoAlbumViewController: UIViewController,MKMapViewDelegate,UICollectionV
         fetchReq.predicate = predicate
        
         newCollectionBtn.isEnabled = false
-        
+        loading = true
+        self.albumCollectionView.reloadData()
         if let pinsResult = try? dataController.viewContext.fetch(fetchReq){
-            flickerDownload.loadImageByLatLon(pinsResult[0], {
-                self.loadPinImages(pinsResult)
+            flickerDownload.loadImageByLatLon(pinsResult[0], success : {
+                self.loading = false
                 self.newCollectionBtn.isEnabled = true
-            }, {
+                self.loadPinImages(pinsResult)
+                
+            }, failed: {
                 self.newCollectionBtn.isEnabled = true
             })
         }
     }
-    
-    
     
 }
