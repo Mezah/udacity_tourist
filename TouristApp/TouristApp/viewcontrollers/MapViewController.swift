@@ -17,6 +17,8 @@ class MapViewController: UIViewController , MKMapViewDelegate{
     
     
     @IBOutlet weak var travellerMap: MKMapView!
+    private let flickerDownload = FlickerDownload()
+    private var selectedPin :Pin?
     
     fileprivate func configureMapTouchGesture() {
         let longPressRecogniser = UILongPressGestureRecognizer(target: self, action: #selector(MapViewController.handleLongPress(_:)))
@@ -38,12 +40,22 @@ class MapViewController: UIViewController , MKMapViewDelegate{
         travellerMap.addAnnotation(annotation)
         // Save the selected locations into local storage
         // first initialize object
-        let selectedPin = Pin(context:dataController.viewContext)
-        selectedPin.long = annotation.coordinate.longitude
-        selectedPin.lat = annotation.coordinate.latitude
-        // save after setting the object up
-        try? dataController.viewContext.save()
-        // TODO start download photos related to pin
+        selectedPin = Pin(context:dataController.viewContext)
+        if let selectedPin = selectedPin {
+            selectedPin.long = annotation.coordinate.longitude
+            selectedPin.lat = annotation.coordinate.latitude
+            // save after setting the object up
+            try? dataController.viewContext.save()
+            // TODO start download photos related to pin
+            self.flickerDownload.loadImageByLatLon(selectedPin,{
+                
+                // save after setting the object up
+                try? self.dataController.viewContext.save()
+            },{
+                //TODO do some error handle
+            })
+        }
+       
         
     }
     
@@ -60,6 +72,7 @@ class MapViewController: UIViewController , MKMapViewDelegate{
     private func prepareData(){
         // load data from local storage if any and associate it with the location annotation dictionary
         let fetchReq : NSFetchRequest<Pin> = Pin.fetchRequest()
+        
         if let pinsResult = try? dataController.viewContext.fetch(fetchReq){
             for pin in pinsResult {
                 let annot = MKPointAnnotation()
@@ -106,10 +119,8 @@ class MapViewController: UIViewController , MKMapViewDelegate{
         if segue.identifier == "toCollection" {
             let view = sender as! MKAnnotationView
             let photoAlbum = segue.destination as! PhotoAlbumViewController
-            let selectedPin = Pin(context:dataController.viewContext)
-            selectedPin.long = view.annotation?.coordinate.longitude ?? 0.0
-            selectedPin.lat = view.annotation?.coordinate.latitude ?? 0.0
-            photoAlbum.pinLocation = selectedPin
+                photoAlbum.long = view.annotation?.coordinate.longitude ?? 0.0
+                photoAlbum.lat = view.annotation?.coordinate.latitude ?? 0.0
         }
     }
 }
