@@ -105,50 +105,60 @@
                                     <outlet property="delegate" destination="y26-ML-xcf" id="JVa-Nb-llF"/>
                                 </connections>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No Images Found" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="186-qx-D2f">
+                                <rect key="frame" x="0.0" y="267" width="375" height="351"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <tabBar autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" itemPositioning="centered" translatesAutoresizingMaskIntoConstraints="NO" id="5qT-Rz-OVh">
                                 <rect key="frame" x="0.0" y="618" width="375" height="49"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items/>
                             </tabBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Collection" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xy2-NL-ct4">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jt3-os-D1e">
                                 <rect key="frame" x="0.0" y="618" width="375" height="49"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <state key="normal" title="New Collection"/>
+                                <connections>
+                                    <action selector="getNewCollection" destination="y26-ML-xcf" eventType="touchUpInside" id="POM-GN-6as"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="5qT-Rz-OVh" firstAttribute="trailing" secondItem="3eO-ZV-REK" secondAttribute="trailing" id="1hp-A0-znh"/>
-                            <constraint firstItem="3eO-ZV-REK" firstAttribute="bottom" secondItem="xy2-NL-ct4" secondAttribute="bottom" id="2Va-zv-d6A"/>
+                            <constraint firstItem="jt3-os-D1e" firstAttribute="top" secondItem="h6i-Zp-RzA" secondAttribute="bottom" id="5ge-KP-Pr6"/>
                             <constraint firstItem="3eO-ZV-REK" firstAttribute="trailing" secondItem="h6i-Zp-RzA" secondAttribute="trailing" id="6cK-7s-7h1"/>
                             <constraint firstItem="5qT-Rz-OVh" firstAttribute="top" secondItem="h6i-Zp-RzA" secondAttribute="bottom" id="EcJ-JW-1ck"/>
                             <constraint firstItem="5qT-Rz-OVh" firstAttribute="leading" secondItem="h6i-Zp-RzA" secondAttribute="leading" id="MID-My-GVW"/>
                             <constraint firstItem="hps-MA-ibg" firstAttribute="leading" secondItem="3eO-ZV-REK" secondAttribute="leading" id="NoI-5a-6d6"/>
                             <constraint firstItem="3eO-ZV-REK" firstAttribute="trailing" secondItem="hps-MA-ibg" secondAttribute="trailing" id="O4O-Ub-HIm"/>
                             <constraint firstItem="5qT-Rz-OVh" firstAttribute="bottom" secondItem="3eO-ZV-REK" secondAttribute="bottom" id="PLS-li-DFn"/>
-                            <constraint firstItem="xy2-NL-ct4" firstAttribute="top" secondItem="h6i-Zp-RzA" secondAttribute="bottom" id="TPl-QB-OX6"/>
+                            <constraint firstItem="3eO-ZV-REK" firstAttribute="trailing" secondItem="jt3-os-D1e" secondAttribute="trailing" id="Ri9-xF-1Fd"/>
                             <constraint firstItem="3eO-ZV-REK" firstAttribute="bottom" secondItem="hps-MA-ibg" secondAttribute="bottom" constant="400" id="VJD-7k-ZZa"/>
                             <constraint firstItem="h6i-Zp-RzA" firstAttribute="leading" secondItem="3eO-ZV-REK" secondAttribute="leading" id="aii-AM-cKo"/>
+                            <constraint firstItem="3eO-ZV-REK" firstAttribute="bottom" secondItem="jt3-os-D1e" secondAttribute="bottom" id="eQC-Yf-q9Z"/>
                             <constraint firstItem="5qT-Rz-OVh" firstAttribute="leading" secondItem="3eO-ZV-REK" secondAttribute="leading" id="fTU-L3-Bsi"/>
                             <constraint firstItem="hps-MA-ibg" firstAttribute="top" secondItem="3eO-ZV-REK" secondAttribute="top" id="ggT-Cg-caI"/>
                             <constraint firstItem="5qT-Rz-OVh" firstAttribute="bottom" secondItem="3eO-ZV-REK" secondAttribute="bottom" id="kdS-Ru-WCO"/>
                             <constraint firstItem="5qT-Rz-OVh" firstAttribute="trailing" secondItem="h6i-Zp-RzA" secondAttribute="trailing" id="mmL-pN-WUo"/>
-                            <constraint firstItem="xy2-NL-ct4" firstAttribute="leading" secondItem="3eO-ZV-REK" secondAttribute="leading" id="nyd-X5-7fy"/>
                             <constraint firstItem="h6i-Zp-RzA" firstAttribute="top" secondItem="hps-MA-ibg" secondAttribute="bottom" id="qug-HN-YHq"/>
-                            <constraint firstItem="3eO-ZV-REK" firstAttribute="trailing" secondItem="xy2-NL-ct4" secondAttribute="trailing" id="zcO-gI-qkb"/>
+                            <constraint firstItem="jt3-os-D1e" firstAttribute="leading" secondItem="3eO-ZV-REK" secondAttribute="leading" id="wBh-Qj-PpW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3eO-ZV-REK"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="New Collection" id="s5p-Hr-zGS"/>
                     <connections>
                         <outlet property="albumCollectionView" destination="h6i-Zp-RzA" id="H3d-xQ-vVk"/>
+                        <outlet property="emptyLable" destination="186-qx-D2f" id="ha2-C6-hYa"/>
+                        <outlet property="newCollectionBtn" destination="jt3-os-D1e" id="PYY-Ot-IRw"/>
                         <outlet property="photoAlbumLocation" destination="hps-MA-ibg" id="pxU-tB-D3u"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qCW-JO-0tb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="660" y="-152"/>
+            <point key="canvasLocation" x="660" y="-152.47376311844079"/>
         </scene>
     </scenes>
 </document>

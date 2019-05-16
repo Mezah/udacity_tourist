@@ -11,7 +11,10 @@ import MapKit
 import CoreData
 
 class PhotoAlbumViewController: UIViewController,MKMapViewDelegate,UICollectionViewDelegate, UICollectionViewDataSource {
-
+    
+    @IBOutlet weak var emptyLable: UILabel!
+    
+    @IBOutlet weak var newCollectionBtn: UIButton!
     @IBOutlet weak var photoAlbumLocation: MKMapView!
     
     var long :Double!
@@ -23,10 +26,32 @@ class PhotoAlbumViewController: UIViewController,MKMapViewDelegate,UICollectionV
     @IBOutlet weak var albumCollectionView: UICollectionView!
     private let flickerDownload = FlickerDownload()
     
+    fileprivate func loadPinImages(_ pinsResult: [Pin]) {
+        if pinsResult[0].photos?.count == 0 {
+            newCollectionBtn.isEnabled = false
+            emptyLable.isHidden = false
+            albumCollectionView.isHidden = true
+        }
+        else {
+            if !photosList.isEmpty {
+                photosList.removeAll(keepingCapacity: false)
+            }
+            newCollectionBtn.isEnabled = true
+            albumCollectionView.isHidden = false
+            emptyLable.isHidden = true
+        }
+        for photo in pinsResult[0].photos as! Set<Photo> {
+            photosList.append(photo)
+        }
+        albumCollectionView.reloadData()
+    }
+ 
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
         albumCollectionView.delegate = self
-        
+        newCollectionBtn.isEnabled = false
+        emptyLable.isHidden = true
         let mkPoint = MKPointAnnotation()
         mkPoint.coordinate.longitude = long
         mkPoint.coordinate.latitude = lat
@@ -35,10 +60,7 @@ class PhotoAlbumViewController: UIViewController,MKMapViewDelegate,UICollectionV
         let predicate = NSPredicate(format: "long == %@", String(long))
         fetchReq.predicate = predicate
         if let pinsResult = try? dataController.viewContext.fetch(fetchReq){
-            for photo in pinsResult[0].photos as! Set<Photo> {
-                photosList.append(photo)
-            }
-            albumCollectionView.reloadData()
+            loadPinImages(pinsResult)
         }
     }
     
@@ -63,7 +85,7 @@ class PhotoAlbumViewController: UIViewController,MKMapViewDelegate,UICollectionV
         
         return pinView
     }
-
+    
     //MARK: Collection View delegates
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
@@ -90,4 +112,25 @@ class PhotoAlbumViewController: UIViewController,MKMapViewDelegate,UICollectionV
         photosList.remove(at: pos)
         
     }
+    
+    @IBAction func getNewCollection(){
+        // load the current pin using the coordinate
+        let fetchReq : NSFetchRequest<Pin> = Pin.fetchRequest()
+        let predicate = NSPredicate(format: "long == %@", String(long))
+        fetchReq.predicate = predicate
+       
+        newCollectionBtn.isEnabled = false
+        
+        if let pinsResult = try? dataController.viewContext.fetch(fetchReq){
+            flickerDownload.loadImageByLatLon(pinsResult[0], {
+                self.loadPinImages(pinsResult)
+                self.newCollectionBtn.isEnabled = true
+            }, {
+                self.newCollectionBtn.isEnabled = true
+            })
+        }
+    }
+    
+    
+    
 }
